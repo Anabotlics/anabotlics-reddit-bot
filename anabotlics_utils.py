@@ -11,35 +11,15 @@ import functools
 import tqdm
 import praw
 import firebase_admin
-from firebase_admin import firestore
 from google.cloud import storage
 
-import os
-os.environ.setdefault("GCLOUD_PROJECT", "anabotlics-reddit-bot")
-BUCKET = os.environ.get('BUCKET', 'anabotlics-cf-data')
 STORAGE_CLIENT = None
-APP = None
-DB = None
-
-THE_MONKEYS = {
-'geardedandbearded','shrugsandsnugs',
-'automoderator', 'steroidsbot',
-'calllivesmatter', 'olvankarr', 'accountunkn0wn'
-}
 
 
 def init_storage_client():
     global STORAGE_CLIENT
 
     STORAGE_CLIENT = storage.Client()
-
-
-def init_firestore():
-    global APP
-    global DB
-
-    APP = firebase_admin.initialize_app()
-    DB = firestore.client()
 
 
 def get_gs_file(bucket: str, fpath: str) -> str:
@@ -114,18 +94,6 @@ def get_flair_from_text(bot: praw.models.Subreddit, flair_text: str) -> str:
     return None
 
 
-@functools.cache
-def record_user(name, uid):
-    if DB is None:
-        init_firestore()
-
-    doc_ref = DB.collection(u'users').document(uid)
-    doc_ref.set({
-        'name': name
-    })
-    return 1
-
-
 def init_reddit_bot(config):
     reddit = praw.Reddit(
         client_id=config.get('DEFAULT', 'CLIENT_ID'),
@@ -135,6 +103,7 @@ def init_reddit_bot(config):
         user_agent=config.get('DEFAULT', 'USER_AGENT')
     )
     return reddit
+
 
 def get_config(event):
     try:

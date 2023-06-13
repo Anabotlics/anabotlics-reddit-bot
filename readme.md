@@ -181,3 +181,9 @@ The bot may get banned automatically if it is deemed too spammy, you can circumv
 ![example_app](.images/example_app.png)
 
 8. Update the `bot.ini` and change the `CLIENT_ID` and `CLIENT_SECRET` with the new values you just got
+
+#### Next steps / TODO
+
+- githook to upload config/ files to cloud storage
+
+- githook to create cloud triggers and update cloud function

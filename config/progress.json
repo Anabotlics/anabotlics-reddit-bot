@@ -1,0 +1,9 @@
+{
+  "bucket": "anabotlics-cf-data",
+  "bot_config": "bot.ini",
+  "post": {
+    "title": "Monthly Progress Thread: %B %Y",
+    "body_file": "progress_body.md",
+    "flair_text": "Progress"
+  }
+}

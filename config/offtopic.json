@@ -1,0 +1,9 @@
+{
+  "bucket": "anabotlics-cf-data",
+  "bot_config": "bot.ini",
+  "post": {
+    "title": "[Off-Topic] Daily Chat: %Y-%m-%d",
+    "body_text": "Post all your debauchery, shenanigans, or anything off-topic here!",
+    "flair_text": "Off-Topic"
+  }
+}

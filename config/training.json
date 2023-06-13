@@ -1,0 +1,9 @@
+{
+  "bucket": "anabotlics-cf-data",
+  "bot_config": "bot.ini",
+  "post": {
+    "title": "Training Monday: %Y-%m-%d",
+    "body_file": "training_body.md",
+    "flair_text": "Training"
+  }
+}
